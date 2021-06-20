@@ -101,17 +101,23 @@ function nlpFilter(content) {
         }
     }
 
-    var st = JSON.stringify(finalElts);
-    return st;
+    
+    return finalElts;
 }
 
 
 
 function writeToFile(filename, content, link) {
     //preprocess--------------
-    var text = nlpFilter(content);
+    var termInfo = nlpFilter(content);
     //
-    text = link + '\n' + text;
+    var info={
+        'url':link,
+        'terms':termInfo,
+        'flat_context':"to do..."
+    };
+
+    var text = JSON.stringify(info);
     fs.writeFile(filename, text, function (err) {
         if (err) {
             console.log(err);
