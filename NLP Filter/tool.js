@@ -74,6 +74,7 @@ function nlpFilter(content) {
         var i = tksArr.indexOf(tf[0]);
         if (i >= 0 && stopWordArr[i] == false && typeArr[i] == 'word') {
             if (posArr[i] == 'CCONJ' || posArr[i] == 'SCONJ' || posArr[i] == 'ADP' || posArr[i] == 'INTJ' || posArr[i] == 'PRON') {
+                //finalElts.splice(i,1);
                 continue;
             }
             tf.push(typeArr[i]);
@@ -90,6 +91,13 @@ function nlpFilter(content) {
             console.log(finalElts[targetIdx]) ;
             console.log();
 
+        }
+    }
+
+    for(var i = 0; i < finalElts.length; i++){
+        if(finalElts[i]['total']==0){
+            finalElts.splice(i,1);
+            i--;
         }
     }
 
