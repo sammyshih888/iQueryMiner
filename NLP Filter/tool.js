@@ -73,13 +73,16 @@ function nlpFilter(content) {
     for (var tf of tksFrqArr) {
         var i = tksArr.indexOf(tf[0]);
         if (i >= 0 && stopWordArr[i] == false && typeArr[i] == 'word') {
-            if (posArr[i] == 'CCONJ' || posArr[i] == 'SCONJ' || posArr[i] == 'ADP' || posArr[i] == 'INTJ' || posArr[i] == 'PRON') {
+            if (posArr[i] == 'CCONJ' || posArr[i] == 'SCONJ' || posArr[i] == 'ADP' || posArr[i] == 'INTJ' || posArr[i] == 'PRON' || posArr[i] == 'PART') {
                 //finalElts.splice(i,1);
                 continue;
             }
             tf.push(typeArr[i]);
             tf.push(posArr[i]);
             // tf : term , frq , type , pos
+            // if( tf[0]=="’s" || tf[0]=="’S"){
+            //     console.log(tf[0]+"===>"+posArr[i])
+            // }
 
             var targetIdx = uniqueStems.indexOf(stemArr[i]);
 
@@ -105,16 +108,27 @@ function nlpFilter(content) {
     return finalElts;
 }
 
+function generatePseudoContext(termInfo){
 
+    var text="";
+    for(var i = 0; i < termInfo.length; i++){
+        for(var j = 0; j < termInfo[i]['total']; j++){
+            text = text+ " " + termInfo[i]['stem'];
+        }
+    }
+    return text;
+}
 
 function writeToFile(filename, content, link) {
     //preprocess--------------
     var termInfo = nlpFilter(content);
+    var psContext = generatePseudoContext(termInfo);
+
     //
     var info={
         'url':link,
         'terms':termInfo,
-        'flat_context':"to do..."
+        'pseudo_context':psContext
     };
 
     var text = JSON.stringify(info);
