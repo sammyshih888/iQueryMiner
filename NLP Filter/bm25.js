@@ -5,8 +5,8 @@ var engine = bm25();
 // Load NLP utilities
 var nlp = require( 'wink-nlp-utils' );
 // Load sample data (load any other JSON data instead of sample)
-var docs = require( './demo-data-for-wink-bm25.json' );
- 
+var docs = require( './Deforestation:File_6.json' );
+
 // Define preparatory task pipe!
 var pipe = [
   nlp.string.lowerCase,

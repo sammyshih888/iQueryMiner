@@ -33,7 +33,7 @@ function readFromSourceList() {
             if (line.startsWith("https://") || line.startsWith("http://")) {
                 dataMap[currentCategory].push(line);
                 currentCategory.replace(/\s/g, '');
-                checkIfNewContent(line, currentCategory + "File_" + fileNum);
+                checkIfNewContent(line, currentCategory + "File_" + fileNum+ ".json");
                 fileNum++;
             }else if(line.length == 0) {
                 continue;
@@ -128,7 +128,8 @@ function writeToFile(filename, content, link) {
     var info={
         'url':link,
         'terms':termInfo,
-        'pseudo_context':psContext
+        'body':psContext, //pseudoContext
+        'title':""
     };
 
     var text = JSON.stringify(info);
