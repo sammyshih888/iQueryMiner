@@ -61,8 +61,15 @@ function calResult() {
         engine.consolidate();
 
         result = engine.exportJSON();
-        console.log('\n\n\n');
-        console.log(result);
+        // console.log('\n\n\n');
+        // console.log(result);
+        fs.writeFile("final.json", result, function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Write operation complete.');
+            }
+          });
     } else {
 
         setTimeout(() => {
@@ -86,7 +93,8 @@ function check_work() {
             fs.readFile(jf, (err, data) => {
                 if (err) throw err;
                 let example = JSON.parse(data);
-                console.log('add : '+jf) ;
+                jf = jf.substring(jf.lastIndexOf('/')+1);
+                // console.log('add : '+jf) ;
                 //console.log(example);
                 documentData.push(example);
                 engine.addDoc(example, jf);
