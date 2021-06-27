@@ -55,14 +55,35 @@ fs.readdir(directoryPath,
 
 function calResult() {
     console.log('calResult ==> engine totalDocs : '+totalDocs );
+
+    var max_index = 4394;
     if (totalDocs == 50) {
         // Step IV: Consolidate
         // Consolidate before searching
         engine.consolidate();
 
         result = engine.exportJSON();
-        // console.log('\n\n\n');
-        // console.log(result);
+        resultObj = JSON.parse(result);
+        for (const doc_name in resultObj[2]) {
+            var terms = resultObj[2][doc_name]['freq'];
+            var new_terms={};
+            for(let tid=0 ; tid<max_index ; tid++){
+                if(terms[tid]==null){
+                    new_terms["w"+tid] = 0 ;
+                }else{
+                    new_terms["w"+tid] = terms[tid] ;
+                }
+            }
+
+            resultObj[2][doc_name]['freq']=new_terms;
+            // for (const term_id in terms) {
+            //     console.log( term_id+" : "+terms[term_id]) ;
+            // }
+            //console.log(new_terms) ;
+        }
+        result = JSON.stringify(resultObj) ;
+        console.log('\n\n\n');
+        //console.log(result);
         fs.writeFile("final.json", result, function (err) {
             if (err) {
                 console.log(err);
