@@ -64,14 +64,25 @@ function calResult() {
 
         result = engine.exportJSON();
         resultObj = JSON.parse(result);
+
+        // termid : word
+        var termsMap = [] ;
+        for (const key in resultObj[5]) {
+            termsMap[ resultObj[5][key]] = key;
+        }
+
+
         for (const doc_name in resultObj[2]) {
+            console.log('doc name :'+doc_name) ;
             var terms = resultObj[2][doc_name]['freq'];
             var new_terms={};
+            var show_terms=[];
             for(let tid=0 ; tid<max_index ; tid++){
                 if(terms[tid]==null){
                     new_terms["w"+tid] = 0 ;
                 }else{
                     new_terms["w"+tid] = terms[tid] ;
+                    show_terms.push({ 'w':termsMap[tid],'s':terms[tid]});
                 }
             }
 
@@ -80,6 +91,26 @@ function calResult() {
             //     console.log( term_id+" : "+terms[term_id]) ;
             // }
             //console.log(new_terms) ;
+
+            show_terms = show_terms.sort(function (a,b) {
+                // console.log(a.s) ;
+                // console.log(b.s) ;
+                if(a.s>b.s){
+                    return -1 ;
+                }else if(a.s<b.s){
+                    return 1 ;
+                }else{
+                    return 0 ;
+                }
+            });
+
+            let st = '';
+            for (const item of show_terms) {
+                //st+=item.w+':'+item.s+" " ;
+                st+=item.w + " ";
+            }
+            console.log(st+"\n\n");
+
         }
         result = JSON.stringify(resultObj) ;
         console.log('\n\n\n');
