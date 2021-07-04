@@ -70,4 +70,5 @@ Document 49 ==> 0
 
 # Discussion and Conclusion
 - Groups documents with different topics together, a few documents are the only ones in a category(13, 22, 45)
-- 
+- Documents may be too indirectly related because topics are too broad
+- K-means clustering unable to distinguish between distinct topics
