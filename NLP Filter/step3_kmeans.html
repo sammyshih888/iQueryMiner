@@ -1,0 +1,54 @@
+<html>
+<script src="./ml5.min.js"></script>
+<script src="./lc_1625638907932_final.json"></script>
+<script>
+var kmeans ;
+  window.addEventListener("load", function (event) {
+    dataArr = [];
+    resultObj = JSON.parse(data);
+    // console.log(resultObj) ;
+    for (const doc_name in resultObj[2]) {
+      var terms = resultObj[2][doc_name]['freq'];
+      dataArr.push(terms);
+    }
+    //console.log(dataArr) ;
+    const options = {
+      k: 2,
+      maxIter: 10,
+      threshold: 0.2,
+    };
+    // Initialize the magicFeature
+     kmeans = ml5.kmeans(dataArr, options, clustersCalculated);
+
+    // // When the model is loaded
+    function clustersCalculated() {
+      console.log('Points Clustered!');
+      for( let i=0 ; i<kmeans.dataset.length ; i++){
+        console.log("Document "+i+" ==> "+kmeans.dataset[i].centroid);
+      }
+      //console.log(kmeans.dataset);
+    }
+
+  });
+//      const data = [{ x1: 0, x1: 0 }, { x1: 0, x2: 1 }, { x1: 1, x2: 0 }, { x1: 1, x2: 1 }];
+//     //const data = [{ x: 0}, {  y: 1 }, { x: 1, y: 0 }, { x: 1, y: 1 }];
+
+//     const options = {
+//       k: 3,
+//       maxIter: 4,
+//       threshold: 0.5,
+//     };
+//     // Initialize the magicFeature
+//     const kmeans = ml5.kmeans(data, options, clustersCalculated);
+
+//     // When the model is loaded
+//     function clustersCalculated() {
+//       console.log('Points Clustered!');
+//       console.log(kmeans.dataset);
+// }
+
+
+
+</script>
+
+</html>

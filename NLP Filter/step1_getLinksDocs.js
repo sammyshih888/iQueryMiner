@@ -21,7 +21,13 @@ var dataMap = []; // category , link-list
 
 function readFromSourceList() {
 
-    fs.readFile('sourceList.txt', function (err, data) {
+    // create output folder
+    var dir = './lc_'+new Date().getTime();
+    if(!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+
+    fs.readFile('specificSourceList.txt', function (err, data) {
         if (err) throw err;
 
         var currentCategory;
@@ -33,7 +39,7 @@ function readFromSourceList() {
             if (line.startsWith("https://") || line.startsWith("http://")) {
                 dataMap[currentCategory].push(line);
                 currentCategory.replace(/\s/g, '');
-                checkIfNewContent(line, currentCategory + "File_" + fileNum+ ".json");
+                checkIfNewContent(line, dir+'/'+currentCategory + "File_" + fileNum+ ".json");
                 fileNum++;
             }else if(line.length == 0) {
                 continue;
