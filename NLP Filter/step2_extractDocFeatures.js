@@ -65,13 +65,6 @@ engine.consolidate();
 
 result = engine.exportJSON();
 
-fs.writeFile(directoryPath + "_final.json", result, function (err) {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log('Write operation complete.');
-    }
-});
 
 
 
@@ -137,6 +130,27 @@ for (const doc_name in docs) {
 }
 
 fs.writeFile(directoryPath + "_docTerms.txt", docTerms, function (err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('Write operation complete.');
+    }
+});
+
+result = JSON.stringify(resultObj) ;
+
+fs.writeFile(directoryPath + "_final.json", result, function (err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('Write operation complete.');
+    }
+});
+
+
+
+result = "var data='"+result+"';";
+fs.writeFile(directoryPath + "_final_for_kms.js", result, function (err) {
     if (err) {
         console.log(err);
     } else {
