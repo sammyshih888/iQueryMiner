@@ -14,7 +14,7 @@
     </div>
 </body>
 <script>
-    d3.csv('lc_1625638907932_final.csv', function(err, rows) {
+    d3.csv('./doc_rel_full_score_unit.csv', function(err, rows) {
         function unpack(rows, key) {
             return rows.map(function(row) {
                 return row[key];

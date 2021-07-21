@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-let rawdata = fs.readFileSync('lc_1625638907932_final.json');
+let rawdata = fs.readFileSync('lc_1626696556252_final.json');
 let bm25_info = JSON.parse(rawdata);
 var doc_info = bm25_info[2];
 var term_info = bm25_info[3];
