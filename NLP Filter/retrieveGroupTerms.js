@@ -14,6 +14,7 @@ for(let word in docFeatures[5]){
 }
 
 let data = [];
+let rank = [];
 
 var groups_set = new Set(); //1:(7) [17, 19, 18, 13, 14, 10, 16]
 for( let i of [7, 8, 6, 2, 4, 3, 0])
@@ -29,6 +30,10 @@ for (let tid = 0; tid < term_info.length; tid++) {
 
             let score = docs_info[docs_of_some_term[i]]['freq']['w'+tid] ;
             count += score ;
+            if(rank[docs_of_some_term[i]]==undefined){
+                rank[docs_of_some_term[i]]=0;
+            }
+            rank[docs_of_some_term[i]]+=score;
             //count++;
         }
     }
