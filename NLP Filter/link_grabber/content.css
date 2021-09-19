@@ -1,0 +1,79 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.btnNav {
+    width: 150px;
+    position: fixed;
+    z-index: 999;
+    bottom: 100px;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.btnNav .closebtn {
+    color: darkseagreen;
+    position: absolute;
+    top: 0;
+    font-size: 30px;
+    text-decoration: none;
+    padding-left: 30px;
+}
+
+.btnNav .openbtn {
+    color: darkseagreen;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.sidenav {
+    height: 100%;
+    width: 500px;
+    position: fixed;
+    z-index: 99;
+    top: 150px;
+    left: -800px;
+    background-color: rgb(224, 238, 238);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 24px;
+    color: darkslategrey;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:link {
+    color: darkslategrey;
+    text-decoration: none;
+}
+
+.sidenav a:visited {
+    color: darkslategrey;
+    text-decoration: none;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+    background-color: rgb(67, 90, 21);
+    text-decoration: none;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
