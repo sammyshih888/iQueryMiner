@@ -1,0 +1,31 @@
+{
+   "name": "ConceptTracker",
+   "manifest_version": 3,
+   "version": "2.0",
+   "content_scripts": [
+      {
+         "matches": [
+            "https://*.google.com/search*"
+         ],
+         "css": [
+            "content.css"
+         ],
+         "js": [
+            "content.js"
+         ]
+      }
+   ],
+   "web_accessible_resources": [
+      {
+         "resources": [
+            "main.js"
+         ],
+         "matches": [
+            "https://*/*"
+         ]
+      }
+   ],
+   "permissions": [
+      "storage"
+   ]
+}
