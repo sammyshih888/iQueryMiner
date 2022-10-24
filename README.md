@@ -1,15 +1,17 @@
 # iQueryMiner
 
+# System Architecture
+
 # Components
-## Concept Tracker
+## A.Concept Tracker
 - deployment platform：chrome extension
 - development programming language：javascript、css、html
 - database：Firebase Realtime Database
-## Concept Analyser
+## B.Concept Analyser
 - deployment platform：node.js
 - development programming language：javascript
 
-## Dashboard
+## C.Dashboard
 - deployment platform：web page（web server）
 - development programming language：javascript
 - database：Firebase Realtime Database
