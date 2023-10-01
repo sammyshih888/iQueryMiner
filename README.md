@@ -1,5 +1,7 @@
 # iQueryMiner
 
+Extension: https://chrome.google.com/webstore/detail/concepttracker/mfhffmciljnokfnpomlhhkgdepafjdjd/related?hl=en&authuser=0
+
 # Introduction
 In the process of conducting reports and research, it is quite simple to collect data through google. However, it is not easy and takes a lot of time to filter out meaningful key information from a large amount of data.
 I hope to design a system to help sort out the query results on google and summarize known or even unknown key concepts from these results. 
